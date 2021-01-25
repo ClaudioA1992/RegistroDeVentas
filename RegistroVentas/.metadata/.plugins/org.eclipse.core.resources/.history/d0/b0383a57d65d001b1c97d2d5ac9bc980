@@ -1,0 +1,13 @@
+package AVLA.prueba.recursos.modelos;
+
+import javax.persistence.Entity;
+
+@Entity
+public class Registro {
+	
+	private Integer cantidad;
+	private String cualidadDeRegistro;
+	
+
+	
+}

@@ -1,0 +1,15 @@
+package AVLA.prueba.recursos.modelos;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
+public class Usuario {
+	
+	private String usuario;
+	private String password;
+	@Id
+	@Column(name ="USUARIOID")
+	private Long usuarioId;
+
+}

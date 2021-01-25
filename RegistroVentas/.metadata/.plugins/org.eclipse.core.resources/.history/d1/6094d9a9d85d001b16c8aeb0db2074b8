@@ -1,0 +1,30 @@
+package AVLA.prueba.recursos.modelos;
+
+import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+@Entity
+public class Usuario {
+	
+	@Column(name = "USER")
+	private String usuario;
+	private String password;
+	@Id
+	@Column(name ="USUARIOID")
+	private Long usuarioId;
+	
+	@OneToMany
+	private List<Registro> registro;
+	
+	@OneToMany
+	private List<Operacion> operacion;
+	
+	
+	
+	
+
+}

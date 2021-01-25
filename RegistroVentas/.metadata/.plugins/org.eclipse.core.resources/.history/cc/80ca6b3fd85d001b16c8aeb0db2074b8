@@ -1,0 +1,11 @@
+package AVLA.prueba.recursos.modelos;
+
+
+public class PKRegistro {
+	
+	
+	@Column(name = "USUARIOID")
+	private Long usuarioId;
+	@Column(name = "PRODUCTOID")
+	private Long productoId;
+}

@@ -1,0 +1,21 @@
+package AVLA.prueba.recursos.modelos;
+
+import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+public class Producto {
+	
+	@Column(name = "NOMBREPRODUCTO")
+	private String nombreProducto;
+	@Id
+	@Column(name ="PRODUCTOID")
+	private Long productoId;
+	private String descripcion;
+	
+	@OneToMany
+	private List<Registro> registros;
+
+}

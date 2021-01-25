@@ -1,0 +1,24 @@
+INDEX VERSION 1.131+C:\Users\Claudio\Documents\Programación\Proyectos Spring Boot\RegistroVentas\.metadata\.plugins\org.eclipse.jdt.core
+354044337.index
+2747723724.index
+968353894.index
+4197003198.index
+2355775692.index
+1063776850.index
+4280569840.index
+3799857758.index
+478489360.index
+1892765618.index
+3505469915.index
+906022545.index
+3963072896.index
+3366515480.index
+227742732.index
+4128167706.index
+3429649942.index
+4205819299.index
+1558188779.index
+2686298477.index
+2923020411.index
+292451815.index
+2675929326.index

@@ -1,0 +1,34 @@
+package AVLA.prueba.recursos.modelos;
+
+import javax.persistence.Column;
+
+public class PKRegistro {
+	
+	
+	@Column(name = "USUARIOID")
+	private Long usuarioId;
+	@Column(name = "PRODUCTOID")
+	private Long productoId;
+	
+	
+	public Long getUsuarioId() {
+		return usuarioId;
+	}
+	public void setUsuarioId(Long usuarioId) {
+		this.usuarioId = usuarioId;
+	}
+	public Long getProductoId() {
+		return productoId;
+	}
+	public void setProductoId(Long productoId) {
+		this.productoId = productoId;
+	}
+	
+	public PKRegistro(Long usuarioId, Long productoId) {
+		super();
+		this.usuarioId = usuarioId;
+		this.productoId = productoId;
+	}
+	
+	
+}

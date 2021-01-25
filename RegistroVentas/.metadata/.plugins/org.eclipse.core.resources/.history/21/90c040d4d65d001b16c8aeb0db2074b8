@@ -1,0 +1,15 @@
+package AVLA.prueba.recursos.modelos;
+
+import java.time.LocalDateTime;
+
+import javax.persistence.ManyToOne;
+
+public class Operacion {
+	
+	private String accion;
+	private LocalDateTime dateStamp;
+	
+	@ManyToOne
+	private Usuario usuario;
+
+}

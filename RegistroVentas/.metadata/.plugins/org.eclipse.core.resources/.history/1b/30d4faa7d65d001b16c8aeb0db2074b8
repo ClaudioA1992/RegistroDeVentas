@@ -1,0 +1,9 @@
+package AVLA.prueba.recursos.modelos;
+
+public class Producto {
+	
+	private String nombreProducto;
+	private Long productoId;
+	private String descripcion;
+
+}

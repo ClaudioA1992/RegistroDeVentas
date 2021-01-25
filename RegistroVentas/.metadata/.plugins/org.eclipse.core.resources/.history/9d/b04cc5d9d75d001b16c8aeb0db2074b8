@@ -1,0 +1,16 @@
+package AVLA.prueba.recursos.modelos;
+
+import java.time.LocalDateTime;
+
+import javax.persistence.Entity;
+
+@Entity
+public class Registro {
+	
+	private Integer cantidad;
+	private String cualidadDeRegistro;
+	private String detallesAdicionales;
+	private LocalDateTime timeStamp;
+
+	
+}

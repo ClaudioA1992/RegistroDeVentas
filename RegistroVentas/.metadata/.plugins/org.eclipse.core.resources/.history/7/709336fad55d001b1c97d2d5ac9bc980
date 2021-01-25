@@ -1,0 +1,9 @@
+package AVLA.prueba.recursos.modelos;
+
+public class Usuario {
+	
+	private String usuario;
+	private String password;
+	private Long usuarioId;
+
+}

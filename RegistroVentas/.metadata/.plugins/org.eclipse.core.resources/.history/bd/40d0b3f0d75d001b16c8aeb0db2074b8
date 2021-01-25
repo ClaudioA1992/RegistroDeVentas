@@ -1,0 +1,25 @@
+package AVLA.prueba.recursos.modelos;
+
+import java.time.LocalDateTime;
+
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+@Entity
+public class Registro {
+	
+	private Integer cantidad;
+	private String cualidadDeRegistro;
+	private String detallesAdicionales;
+	private LocalDateTime timeStamp;
+	
+	@ManyToOne
+	@JoinColumn(name = "USUARIOID")
+	private Usuario usuario;
+	
+	@ManyToOne
+	private Producto producto;
+
+	
+}

@@ -19,10 +19,11 @@ public class Producto {
 	private Long productoId;
 	private String descripcion;
 	
+	/*
 	@OneToMany(mappedBy = "producto", cascade = {CascadeType.DETACH, CascadeType.MERGE, 
 			CascadeType.PERSIST, CascadeType.REFRESH})
 	private List<Registro> registros;
-	
+	*/
 
 	public String getNombreProducto() {
 		return nombreProducto;
@@ -47,7 +48,8 @@ public class Producto {
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
-
+	
+	/*
 	public List<Registro> getRegistros() {
 		return registros;
 	}
@@ -55,14 +57,15 @@ public class Producto {
 	public void setRegistros(List<Registro> registros) {
 		this.registros = registros;
 	}
+	*/
 	
 
-	public Producto(String nombreProducto, Long productoId, String descripcion, List<Registro> registros) {
+	public Producto(String nombreProducto, Long productoId, String descripcion/*, List<Registro> registros*/) {
 		super();
 		this.nombreProducto = nombreProducto;
 		this.productoId = productoId;
-		this.descripcion = descripcion;
-		this.registros = registros;
+		this.descripcion = descripcion;/*
+		this.registros = registros;*/
 	}
 	
 	public Producto() {

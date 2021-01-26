@@ -2,6 +2,7 @@ package AVLA.prueba.recursos.modelos;
 
 import java.time.LocalDateTime;
 
+import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -10,14 +11,22 @@ import javax.persistence.ManyToOne;
 @Entity
 public class Registro {
 	
+	/*
 	@EmbeddedId
 	public PKRegistro registroPK;
+	*/
+	
+	@Column(name = "USUARIOID")
+	private Long usuarioId;
+	@Column(name = "PRODUCTOID")
+	private Long productoId;
 	
 	private Integer cantidad;
 	private String cualidadDeRegistro;
 	private String detallesAdicionales;
 	private LocalDateTime timeStamp;
 	
+	/*
 	@ManyToOne
 	@JoinColumn(name = "USUARIOID")
 	private Usuario usuario;
@@ -25,7 +34,9 @@ public class Registro {
 	@ManyToOne
 	@JoinColumn(name = "PRODUCTOID")
 	private Producto producto;
+	*/
 
+	/*
 	public PKRegistro getRegistroPK() {
 		return registroPK;
 	}
@@ -33,6 +44,7 @@ public class Registro {
 	public void setRegistroPK(PKRegistro registroPK) {
 		this.registroPK = registroPK;
 	}
+	*/
 
 	public Integer getCantidad() {
 		return cantidad;
@@ -66,6 +78,7 @@ public class Registro {
 		this.timeStamp = timeStamp;
 	}
 
+	/*
 	public Usuario getUsuario() {
 		return usuario;
 	}
@@ -81,17 +94,38 @@ public class Registro {
 	public void setProducto(Producto producto) {
 		this.producto = producto;
 	}
+	*/
 
-	public Registro(PKRegistro registroPK, Integer cantidad, String cualidadDeRegistro, String detallesAdicionales,
-			LocalDateTime timeStamp, Usuario usuario, Producto producto) {
+	public Registro(/*PKRegistro registroPK, */Integer cantidad, String cualidadDeRegistro, String detallesAdicionales,
+			LocalDateTime timeStamp/*, Usuario usuario, Producto producto*/) {
 		super();
+		/*
 		this.registroPK = registroPK;
+		*/
 		this.cantidad = cantidad;
 		this.cualidadDeRegistro = cualidadDeRegistro;
 		this.detallesAdicionales = detallesAdicionales;
 		this.timeStamp = timeStamp;
+		/*
 		this.usuario = usuario;
 		this.producto = producto;
+		*/
+	}
+
+	public Long getUsuarioId() {
+		return usuarioId;
+	}
+
+	public void setUsuarioId(Long usuarioId) {
+		this.usuarioId = usuarioId;
+	}
+
+	public Long getProductoId() {
+		return productoId;
+	}
+
+	public void setProductoId(Long productoId) {
+		this.productoId = productoId;
 	}
 
 	public Registro() {

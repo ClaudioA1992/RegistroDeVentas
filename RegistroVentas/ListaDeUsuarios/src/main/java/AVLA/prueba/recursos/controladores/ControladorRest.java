@@ -6,10 +6,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.reactive.function.client.WebClient;
+import org.springframework.web.client.RestTemplate;
 
 import AVLA.prueba.recursos.modelos.Registro;
 
@@ -17,32 +18,39 @@ import AVLA.prueba.recursos.modelos.Registro;
 @RequestMapping("/usuario")
 public class ControladorRest {
 	
+	/*
 	@Autowired 
 	private WebClient.Builder wCBuilder;
+	*/
+	
+	@Autowired
+	private RestTemplate rt;
 	
 	@RequestMapping("/{userId}")
 	public List<Registro> getVentas(@PathVariable("userId") String userId) {
 		
 				
-		//get all rated movies IDs
-		/*List<Rating> ratings = Arrays.asList(
-				new Rating("1234", 4),
-				new Rating("5678", 3)
-				);*/
+		//obtener todas las ventas de usuario
+		List<Registro> ventas = Arrays.asList();
 		
-		
-		
-		ratings.stream().map(rating -> { 
+		List<Registro> registros = Arrays.asList();
 			
-			Movie movie = wCBuilder.build()
+		registros = rt.getForObject("http://localhost:8091/registros/" + userId, new ParameterizedTypeReference<List<Registro>>() {});
+
+			
+		registros.stream().map(registro -> { 
+			
+			/*
+			Registro registro = wCBuilder.build()
 				.get()
-				.uri("http://localhost:8091/movies/" + rating.getMovieId())
+				.uri("http://localhost:8091/movies/" + ventas.getMovieId())
 				.retrieve()
 				.bodyToMono(Movie.class)
 				.block();
+			*/
 			
-			/*Movie movie = restTemplate.getForObject("http://localhost:8091/movies/" + rating.getMovieId(), Movie.class);*/
-			return new CatalogItem(movie.getName(), "Test", rating.getRating());	
+			Registro local = rt.getForObject("http://localhost:8091/movies/" + registro.getUsuarioId(), Registro.class);
+			return new Registro(local.getCantidad(), local.getCualidadDeRegistro(), local.getDetallesAdicionales(), local.getTimeStamp());	
 			
 		})
 		.collect(Collectors.toList());
@@ -51,9 +59,9 @@ public class ControladorRest {
 		
 		//Put them all together
 		
-		return Collections.singletonList(
-				new CatalogItem("Trasformers", "Test", 4)
-				);
+//		return Collections.singletonList(
+//				new CatalogItem("Trasformers", "Test", 4)
+//				);
 		
 	}
 

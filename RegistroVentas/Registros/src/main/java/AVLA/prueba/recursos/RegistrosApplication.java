@@ -1,0 +1,13 @@
+package AVLA.prueba.recursos;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class RegistrosApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(RegistrosApplication.class, args);
+	}
+
+}

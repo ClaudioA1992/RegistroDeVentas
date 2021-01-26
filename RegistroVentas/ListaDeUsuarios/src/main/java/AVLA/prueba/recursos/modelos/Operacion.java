@@ -4,8 +4,6 @@ import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 
 @Entity
 public class Operacion {
@@ -15,9 +13,11 @@ public class Operacion {
 	@Column(name = "DATESTAMP")
 	private LocalDateTime dateStamp;
 	
+	/*
 	@ManyToOne
 	@JoinColumn(name = "USUARIOID")
 	private Usuario usuario;
+	*/
 	
 
 	public String getAccion() {
@@ -36,6 +36,7 @@ public class Operacion {
 		this.dateStamp = dateStamp;
 	}
 
+	/*
 	public Usuario getUsuario() {
 		return usuario;
 	}
@@ -43,17 +44,19 @@ public class Operacion {
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
-	
+	*/
 
 	public Operacion() {
 		super();
 	}
 
-	public Operacion(String accion, LocalDateTime dateStamp, Usuario usuario) {
+	public Operacion(String accion, LocalDateTime dateStamp/*, Usuario usuario*/) {
 		super();
 		this.accion = accion;
 		this.dateStamp = dateStamp;
+		/*
 		this.usuario = usuario;
+		*/
 	}
 	
 	

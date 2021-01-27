@@ -3,7 +3,9 @@ package AVLA.prueba.recursos.modelos;
 import java.time.LocalDateTime;
 
 import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 
 @Entity
 public class Registro {
@@ -13,12 +15,12 @@ public class Registro {
 	@EmbeddedId
 	public PKRegistro registroPK;
 	*/
+	@Id
+	@Column(name="idregistro")
+	private Long idRegistro;
 	
-	
-	@Column(name = "USUARIOID")
-	private Long usuarioId;
-	@Column(name = "PRODUCTOID")
-	private Long productoId;
+	@EmbeddedId
+	private PKRegistro pk;
 	
 	private Integer cantidad;
 	private String cualidadDeRegistro;
@@ -47,6 +49,22 @@ public class Registro {
 
 	public Integer getCantidad() {
 		return cantidad;
+	}
+
+	public Long getIdRegistro() {
+		return idRegistro;
+	}
+
+	public void setIdRegistro(Long idRegistro) {
+		this.idRegistro = idRegistro;
+	}
+
+	public PKRegistro getPk() {
+		return pk;
+	}
+
+	public void setPk(PKRegistro pk) {
+		this.pk = pk;
 	}
 
 	public void setCantidad(Integer cantidad) {
@@ -111,6 +129,7 @@ public class Registro {
 		*/
 	}
 
+	/*
 	public Long getUsuarioId() {
 		return usuarioId;
 	}
@@ -125,7 +144,7 @@ public class Registro {
 
 	public void setProductoId(Long productoId) {
 		this.productoId = productoId;
-	}
+	}*/
 
 	public Registro() {
 		super();

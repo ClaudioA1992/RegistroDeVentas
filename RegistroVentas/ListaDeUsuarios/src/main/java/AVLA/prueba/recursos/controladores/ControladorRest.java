@@ -38,10 +38,8 @@ public class ControladorRest {
 		
 		final String uri = "http://localhost:8091/registros/" + userId; 
 		
-	    RestTemplate restTemplate = new RestTemplate();
-
 	    ResponseEntity<List<Registro>> llamada =
-	            restTemplate.exchange(uri,
+	            rt.exchange(uri,
 	                        HttpMethod.GET, null, new ParameterizedTypeReference<List<Registro>>() {
 	                });
 	    List<Registro> registros = llamada.getBody();
@@ -77,13 +75,8 @@ public class ControladorRest {
 		});
 		/*.collect(Collectors.toList());*/
 		
-		//For each movie ID, call movie info service and get details
-		
-		//Put them all together
-		
-//		return Collections.singletonList(
-//				new CatalogItem("Trasformers", "Test", 4)
-//				);
+
+	
 		return ventas;
 	}
 

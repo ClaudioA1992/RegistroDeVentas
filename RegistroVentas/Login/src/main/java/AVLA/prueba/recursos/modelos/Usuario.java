@@ -1,12 +1,8 @@
 package AVLA.prueba.recursos.modelos;
 
-import java.util.List;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 
 @Entity
 public class Usuario {
@@ -14,6 +10,7 @@ public class Usuario {
 	@Column(name = "USER")
 	private String usuario;
 	private String password;
+	private String permisos;
 	@Id
 	@Column(name ="USUARIOID")
 	private Long usuarioId;
@@ -26,6 +23,14 @@ public class Usuario {
 			CascadeType.PERSIST, CascadeType.REFRESH})
 	private List<Operacion> operaciones;*/
 	
+	
+	public String getPermisos() {
+		return permisos;
+	}
+
+	public void setPermisos(String permisos) {
+		this.permisos = permisos;
+	}
 
 	public String getUsuario() {
 		return usuario;

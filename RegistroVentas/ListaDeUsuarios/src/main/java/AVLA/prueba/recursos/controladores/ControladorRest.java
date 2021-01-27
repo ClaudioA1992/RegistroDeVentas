@@ -1,21 +1,22 @@
 package AVLA.prueba.recursos.controladores;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
+import AVLA.prueba.recursos.modelos.Producto;
 import AVLA.prueba.recursos.modelos.Registro;
+import AVLA.prueba.recursos.servicios.ServicioProducto;
 
 @RestController
 @RequestMapping("/usuario")
@@ -28,6 +29,9 @@ public class ControladorRest {
 	
 	@Autowired
 	private RestTemplate rt;
+	
+	@Autowired
+	ServicioProducto sp;
 	
 	@RequestMapping("/{userId}")
 	public List<Registro> getVentas(@PathVariable("userId") Long userId) {
@@ -74,10 +78,106 @@ public class ControladorRest {
 			
 		});
 		/*.collect(Collectors.toList());*/
-		
-
 	
 		return ventas;
+		
+	}
+	
+	@RequestMapping("/editar/{productoId}")
+	public String editarProducto(@PathVariable("productoId") Long productoId, Model m, Producto producto) {
+		
+		Optional<Producto> registrado = sp.encontrarProductoPorId(productoId);
+		
+		String mensaje;
+		
+		if (registrado.isPresent()) {
+			
+			Producto guardar = registrado.get();
+			
+			sp.guardarProducto(guardar);
+			
+			mensaje = "Producto editado con éxito";
+			
+		}
+		
+		else {
+			
+			mensaje = "Error en la edición";
+			
+		}
+		
+		return mensaje;
+		
+	}
+	
+	@RequestMapping("/ingresar")
+	public String ingresarProducto(Model m, Producto producto) {
+		
+		Optional<Producto> registrado = sp.encontrarProductoPorId(producto.getProductoId());
+
+		String mensaje;
+		
+		if (registrado.isPresent()) {
+			
+			Producto guardar = registrado.get();
+			
+			sp.guardarProducto(guardar);
+			
+			mensaje = "Producto editado con éxito";
+			
+		}
+		
+		else {
+			
+			mensaje = "Error en la edición";
+			
+		}
+		
+		return mensaje;
+		
+	}
+	
+	@RequestMapping("/eliminar")
+	public String eliminarProducto(Producto producto) {
+		
+		Optional<Producto> registrado = sp.encontrarProductoPorId(producto.getProductoId());
+		
+		String mensaje;
+		
+		if (registrado.isPresent()) {
+			
+			Producto eliminar = registrado.get();
+			
+			try {
+				
+				sp.eliminarProducto(eliminar.getProductoId());
+				
+				mensaje = "Producto eliminado con éxito";
+				
+				return mensaje;
+				
+			}
+			
+			catch(Exception e) {
+				
+				mensaje = "Error en la eliminación";
+				
+				return mensaje;
+				
+			}
+			
+			
+			
+		}
+		
+		else {
+			
+			mensaje = "Error en la edición";
+			
+		}
+		
+		return mensaje;
+		
 	}
 
 }

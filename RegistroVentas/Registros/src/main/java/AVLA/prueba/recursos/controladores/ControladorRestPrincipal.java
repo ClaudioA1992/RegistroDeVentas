@@ -16,9 +16,9 @@ public class ControladorRestPrincipal {
 	ServicioRegistro sr;
 	
 	@RequestMapping("/registros")
-	public List<Registro> getRegistros() {
+	public List<Registro> getRegistros(Long userId) {
 		
-		return sr.traerRegistros();
+		return sr.traerRegistros(userId);
 		
 	}
 	

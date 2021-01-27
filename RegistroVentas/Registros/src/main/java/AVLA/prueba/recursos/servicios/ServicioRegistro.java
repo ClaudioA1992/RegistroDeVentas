@@ -6,6 +6,7 @@ import AVLA.prueba.recursos.modelos.Registro;
 
 public interface ServicioRegistro {
 	
-	List<Registro> traerRegistros();
+	List<Registro> traerRegistros(Long userId);
+
 
 }

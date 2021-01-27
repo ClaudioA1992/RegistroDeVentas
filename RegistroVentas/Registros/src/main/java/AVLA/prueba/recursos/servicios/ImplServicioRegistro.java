@@ -15,8 +15,8 @@ public class ImplServicioRegistro implements ServicioRegistro{
 	RepositorioRegistro rr;
 
 	@Override
-	public List<Registro> traerRegistros() {
-		return rr.findAll();
+	public List<Registro> traerRegistros(Long userId) {
+		return rr.findByUsuarioId();
 	}
 
 }

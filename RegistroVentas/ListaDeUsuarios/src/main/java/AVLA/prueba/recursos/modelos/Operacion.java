@@ -10,16 +10,18 @@ import javax.persistence.Id;
 public class Operacion {
 	
 	@Id
-	@Column(name = "OPERACIONID")
+	@Column(name ="OPERACIONID")
 	private Long operacionId;
 	
 	
 	private String accion;
-	@Column(name = "DATESTAMP")
+	@Column(name ="DATESTAMP")
 	private LocalDateTime dateStamp;
 	@Column(name ="USUARIOID")
 	private Long usuarioId;
 	private String pagina;
+	@Column(name ="PRODUCTOID")
+	private Long productoId;
 
 
 

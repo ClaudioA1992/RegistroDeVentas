@@ -1,5 +1,0 @@
-package io.javabrains.movieinfoservice.rest;
-
-public class MovieResource {
-
-}

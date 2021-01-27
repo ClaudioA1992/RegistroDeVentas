@@ -1,5 +1,0 @@
-package io.javabrains.ratingsdataservice.rest;
-
-public class RatingsResource {
-
-}

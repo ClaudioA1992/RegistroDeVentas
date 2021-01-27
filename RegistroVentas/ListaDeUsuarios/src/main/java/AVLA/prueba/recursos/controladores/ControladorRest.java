@@ -14,8 +14,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
+import AVLA.prueba.recursos.modelos.Operacion;
 import AVLA.prueba.recursos.modelos.Producto;
 import AVLA.prueba.recursos.modelos.Registro;
+import AVLA.prueba.recursos.servicios.ServicioOperacion;
 import AVLA.prueba.recursos.servicios.ServicioProducto;
 
 @RestController
@@ -33,11 +35,13 @@ public class ControladorRest {
 	@Autowired
 	ServicioProducto sp;
 	
+	@Autowired
+	ServicioOperacion op;
+	
 	@RequestMapping("/{userId}")
 	public List<Registro> getVentas(@PathVariable("userId") Long userId) {
 		
 				
-		//obtener todas las ventas de usuario
 		List<Registro> ventas = Arrays.asList();
 		
 		final String uri = "http://localhost:8091/registros/" + userId; 
@@ -71,7 +75,7 @@ public class ControladorRest {
 			}
 			
 				/*
-			Registro local = rt.getForObject("http://localhost:8091/movies/" + registro.getUsuarioId(), Registro.class);
+			Registro local = rt.getForObject("http://localhost:8091/registro/" + registro.getUsuarioId(), Registro.class);
 			return new Registro(local.getCantidad(), local.getCualidadDeRegistro(), local.getDetallesAdicionales(), local.getTimeStamp());
 			*/
 			
@@ -171,6 +175,29 @@ public class ControladorRest {
 		}
 		
 		else {
+			
+			mensaje = "Error en la edición";
+			
+		}
+		
+		return mensaje;
+		
+	}
+	
+	@RequestMapping("/ingresarOperacion")
+	public String ingresarOperacion(Operacion operacion) {
+			
+		String mensaje;
+		
+		try {
+			
+			op.ingresarOperacion(operacion);
+			
+			mensaje = "Producto editado con éxito";
+			
+		}
+		
+		catch(Exception e) {
 			
 			mensaje = "Error en la edición";
 			

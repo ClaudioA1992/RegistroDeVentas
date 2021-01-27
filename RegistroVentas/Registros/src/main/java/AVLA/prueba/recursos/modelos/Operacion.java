@@ -18,6 +18,8 @@ public class Operacion {
 	private LocalDateTime dateStamp;
 	@Column(name ="usuarioid")
 	private Long usuarioId;
+	private String pagina;
+	
 	/*
 	@ManyToOne
 	@JoinColumn(name = "USUARIOID")
@@ -27,6 +29,14 @@ public class Operacion {
 
 	public String getAccion() {
 		return accion;
+	}
+
+	public String getPagina() {
+		return pagina;
+	}
+
+	public void setPagina(String pagina) {
+		this.pagina = pagina;
 	}
 
 	public Long getOperacionId() {

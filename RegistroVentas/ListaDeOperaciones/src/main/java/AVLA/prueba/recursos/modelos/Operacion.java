@@ -4,13 +4,21 @@ import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 
 @Entity
 public class Operacion {
 	
+	@Id
+	@Column(name = "operacionid")
+	private Long operacionId;
+	
 	private String accion;
 	@Column(name = "DATESTAMP")
 	private LocalDateTime dateStamp;
+	@Column(name ="usuarioid")
+	private Long usuarioId;
+	private String pagina;
 	
 	/*
 	@ManyToOne
@@ -18,9 +26,35 @@ public class Operacion {
 	private Usuario usuario;
 	*/
 	
+	
+	
 
 	public String getAccion() {
 		return accion;
+	}
+
+	public Long getOperacionId() {
+		return operacionId;
+	}
+
+	public void setOperacionId(Long operacionId) {
+		this.operacionId = operacionId;
+	}
+
+	public Long getUsuarioId() {
+		return usuarioId;
+	}
+
+	public void setUsuarioId(Long usuarioId) {
+		this.usuarioId = usuarioId;
+	}
+
+	public String getPagina() {
+		return pagina;
+	}
+
+	public void setPagina(String pagina) {
+		this.pagina = pagina;
 	}
 
 	public void setAccion(String accion) {

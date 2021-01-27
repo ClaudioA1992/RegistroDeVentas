@@ -8,13 +8,9 @@ import javax.persistence.Id;
 
 @Entity
 public class Registro {
-	
-	/*
-	@EmbeddedId
-	public PKRegistro registroPK;
-	*/
+
 	@Id
-	@Column(name = "registroid")
+	@Column(name = "REGISTROID")
 	private Long registroId;
 	
 	@Column(name = "USUARIOID")
@@ -27,25 +23,6 @@ public class Registro {
 	private String detallesAdicionales;
 	private LocalDateTime timeStamp;
 	
-	/*
-	@ManyToOne
-	@JoinColumn(name = "USUARIOID")
-	private Usuario usuario;
-	
-	@ManyToOne
-	@JoinColumn(name = "PRODUCTOID")
-	private Producto producto;
-	*/
-
-	/*
-	public PKRegistro getRegistroPK() {
-		return registroPK;
-	}
-
-	public void setRegistroPK(PKRegistro registroPK) {
-		this.registroPK = registroPK;
-	}
-	*/
 
 	public Integer getCantidad() {
 		return cantidad;
@@ -79,38 +56,16 @@ public class Registro {
 		this.timeStamp = timeStamp;
 	}
 
-	/*
-	public Usuario getUsuario() {
-		return usuario;
-	}
 
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
-	}
-
-	public Producto getProducto() {
-		return producto;
-	}
-
-	public void setProducto(Producto producto) {
-		this.producto = producto;
-	}
-	*/
-
-	public Registro(/*PKRegistro registroPK, */Integer cantidad, String cualidadDeRegistro, String detallesAdicionales,
-			LocalDateTime timeStamp/*, Usuario usuario, Producto producto*/) {
+	public Registro(Integer cantidad, String cualidadDeRegistro, String detallesAdicionales,
+			LocalDateTime timeStamp) {
 		super();
-		/*
-		this.registroPK = registroPK;
-		*/
+
 		this.cantidad = cantidad;
 		this.cualidadDeRegistro = cualidadDeRegistro;
 		this.detallesAdicionales = detallesAdicionales;
 		this.timeStamp = timeStamp;
-		/*
-		this.usuario = usuario;
-		this.producto = producto;
-		*/
+
 	}
 
 	public Long getUsuarioId() {

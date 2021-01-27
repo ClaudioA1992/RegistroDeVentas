@@ -10,21 +10,43 @@ import javax.persistence.Id;
 public class Operacion {
 	
 	@Id
-	@Column(name = "operacionid")
+	@Column(name = "OPERACIONID")
 	private Long operacionId;
 	
 	
 	private String accion;
 	@Column(name = "DATESTAMP")
 	private LocalDateTime dateStamp;
-	
-	/*
-	@ManyToOne
-	@JoinColumn(name = "USUARIOID")
-	private Usuario usuario;
-	*/
-	
+	@Column(name ="USUARIOID")
+	private Long usuarioId;
+	private String pagina;
 
+
+
+	public Long getOperacionId() {
+		return operacionId;
+	}
+
+	public Long getUsuarioId() {
+		return usuarioId;
+	}
+
+	public void setUsuarioId(Long usuarioId) {
+		this.usuarioId = usuarioId;
+	}
+
+	public void setOperacionId(Long operacionId) {
+		this.operacionId = operacionId;
+	}
+
+	public String getPagina() {
+		return pagina;
+	}
+
+	public void setPagina(String pagina) {
+		this.pagina = pagina;
+	}
+	
 	public String getAccion() {
 		return accion;
 	}
@@ -41,27 +63,16 @@ public class Operacion {
 		this.dateStamp = dateStamp;
 	}
 
-	/*
-	public Usuario getUsuario() {
-		return usuario;
-	}
-
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
-	}
-	*/
 
 	public Operacion() {
 		super();
 	}
 
-	public Operacion(String accion, LocalDateTime dateStamp/*, Usuario usuario*/) {
+	public Operacion(String accion, LocalDateTime dateStamp) {
 		super();
 		this.accion = accion;
 		this.dateStamp = dateStamp;
-		/*
-		this.usuario = usuario;
-		*/
+
 	}
 	
 	

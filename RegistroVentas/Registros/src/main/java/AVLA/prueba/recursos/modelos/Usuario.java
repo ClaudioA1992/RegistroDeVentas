@@ -13,17 +13,7 @@ public class Usuario {
 	@Id
 	@Column(name ="USUARIOID")
 	private Long usuarioId;
-	
-	/*
-	@OneToMany(mappedBy = "usuario", cascade = {CascadeType.DETACH, CascadeType.MERGE, 
-			CascadeType.PERSIST, CascadeType.REFRESH})
-	private List<Registro> registros;
-	
-	@OneToMany(mappedBy = "usuario", cascade = {CascadeType.DETACH, CascadeType.MERGE, 
-			CascadeType.PERSIST, CascadeType.REFRESH})
-	private List<Operacion> operaciones;
-	*/
-	
+
 
 	public String getUsuario() {
 		return usuario;
@@ -49,35 +39,14 @@ public class Usuario {
 		this.usuarioId = usuarioId;
 	}
 
-	/*
-	public List<Registro> getRegistros() {
-		return registros;
-	}
-
-	public void setRegistros(List<Registro> registros) {
-		this.registros = registros;
-	}
-
-	public List<Operacion> getOperaciones() {
-		return operaciones;
-	}
-
-	public void setOperaciones(List<Operacion> operaciones) {
-		this.operaciones = operaciones;
-	}
-	*/
 	
 
-	public Usuario(String usuario, String password, Long usuarioId/*, List<Registro> registros,
-			List<Operacion> operaciones*/) {
+	public Usuario(String usuario, String password, Long usuarioId) {
 		super();
 		this.usuario = usuario;
 		this.password = password;
 		this.usuarioId = usuarioId;
-		/*
-		this.registros = registros;
-		this.operaciones = operaciones;
-		*/
+
 	}
 
 	public Usuario() {

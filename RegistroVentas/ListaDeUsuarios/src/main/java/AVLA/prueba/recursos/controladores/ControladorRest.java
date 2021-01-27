@@ -1,5 +1,6 @@
 package AVLA.prueba.recursos.controladores;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -7,6 +8,8 @@ import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -27,18 +30,28 @@ public class ControladorRest {
 	private RestTemplate rt;
 	
 	@RequestMapping("/{userId}")
-	public List<Registro> getVentas(@PathVariable("userId") String userId) {
+	public List<Registro> getVentas(@PathVariable("userId") Long userId) {
 		
 				
 		//obtener todas las ventas de usuario
 		List<Registro> ventas = Arrays.asList();
 		
-		List<Registro> registros = Arrays.asList();
-			
-		registros = rt.getForObject("http://localhost:8091/registros/" + userId, new ParameterizedTypeReference<List<Registro>>() {});
+		final String uri = "http://localhost:8091/registros/" + userId; 
+		
+	    RestTemplate restTemplate = new RestTemplate();
 
-			
-		registros.stream().map(registro -> { 
+	    ResponseEntity<List<Registro>> llamada =
+	            restTemplate.exchange(uri,
+	                        HttpMethod.GET, null, new ParameterizedTypeReference<List<Registro>>() {
+	                });
+	    List<Registro> registros = llamada.getBody();
+		
+		/*
+		List<Registro> registros = Arrays.asList(
+				rt.getForObject("http://localhost:8091/registros/" + userId, new ParameterizedTypeReference<ArrayList<Registro>>() {})
+				);*/
+
+		registros.stream().forEach(registro -> { 
 			
 			/*
 			Registro registro = wCBuilder.build()
@@ -49,11 +62,20 @@ public class ControladorRest {
 				.block();
 			*/
 			
-			Registro local = rt.getForObject("http://localhost:8091/movies/" + registro.getUsuarioId(), Registro.class);
-			return new Registro(local.getCantidad(), local.getCualidadDeRegistro(), local.getDetallesAdicionales(), local.getTimeStamp());	
+			if (registro.getUsuarioId() == userId){
+				
+				ventas.add(registro);
+				
+			}
 			
-		})
-		.collect(Collectors.toList());
+				/*
+			Registro local = rt.getForObject("http://localhost:8091/movies/" + registro.getUsuarioId(), Registro.class);
+			return new Registro(local.getCantidad(), local.getCualidadDeRegistro(), local.getDetallesAdicionales(), local.getTimeStamp());
+			*/
+			
+			
+		});
+		/*.collect(Collectors.toList());*/
 		
 		//For each movie ID, call movie info service and get details
 		
@@ -62,7 +84,7 @@ public class ControladorRest {
 //		return Collections.singletonList(
 //				new CatalogItem("Trasformers", "Test", 4)
 //				);
-		
+		return ventas;
 	}
 
 }
